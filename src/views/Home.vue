@@ -4,11 +4,13 @@
       <div alt="Vue logo" class="mt-8 h-52 w-52 bg-[url('@/assets/logo.svg')] bg-no-repeat" />
     </div>
     <HelloWorld msg="Vue.js 3 starter template" class="mt-2" />
+    <PracticeComponent />
   </div>
 </template>
 
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
+import PracticeComponent from '@/components/PracticeComponent.vue'
 
 defineOptions({
   name: 'Home',
