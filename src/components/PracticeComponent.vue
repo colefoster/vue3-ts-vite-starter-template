@@ -19,7 +19,10 @@
         Clear All Tasks
       </button>
       <div v-for="(task, index) in tasks" :key="index" class="my-2 bg-neutral-200 rounded-lg p-2">
-        Task Name: {{ task.taskName }} <br />
+        Task Name: {{ task.taskName }}
+        <button class="ml-10 bg-red-500 py-1 px-3 rounded-lg hover:bg-red-600 hover:cursor-pointer" @click="deleteTask(index)">
+          Delete</button
+        ><br />
         Task Due Date: {{ task.dueDate }}<br />
         Task Complete: {{ task.complete }}
       </div>
@@ -36,7 +39,12 @@ type Task = {
   complete: string
 }
 
-const tasks = ref<Task[]>([{ taskName: 'abc', dueDate: '123', complete: 'true' }])
+const tasks = ref<Task[]>([
+  { taskName: 'a', dueDate: '122223', complete: 'true' },
+  { taskName: 'b', dueDate: '122223', complete: 'true' },
+  { taskName: 'c', dueDate: '122223', complete: 'true' },
+  { taskName: 'd', dueDate: '111123', complete: 'true' },
+])
 
 const form = ref({
   taskName: '',
@@ -47,6 +55,10 @@ const form = ref({
 defineOptions({
   name: 'PracticeComponent',
 })
+
+function deleteTask(index: number) {
+  tasks.value = tasks.value.slice(0, index).concat(tasks.value.slice(index + 1))
+}
 function handleSubmit() {
   tasks.value.push({
     taskName: form.value.taskName,
